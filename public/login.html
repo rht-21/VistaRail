@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>VistaRail - Login</title>
+        <link rel="stylesheet" href="./components/reg.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    </head>
+<body>
+    
+    <!-- Loader -->
+    <div id="loader" class="center"></div>
+
+    <div class="container">
+        <header>Login</header>
+        <div class="form-outer">
+            <form action='/login' method="POST">
+                <div class="page">
+                    <div class="title">
+                        Login Details:
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            Username
+                        </div>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            Password
+                        </div>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="field btns">
+                        <input class="submit" type="submit" value="Login">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h3 class="login-text">If not yet registered, <a href="/register"><u>click here to register</u></a></h3>
+    <script src="./components/reg.js"></script>
+    <script src="./components/loader.js"></script>
+</body>
+
+</html>

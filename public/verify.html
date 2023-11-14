@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>VistaRail - Email Verification</title>
+    <link rel="stylesheet" href="./components/reg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div id="loader" class="center"></div>
+
+    <div class="container">
+        <header>Email Verification</header>
+        <div class="form-outer">
+            <form action='/verify' method="POST">
+                <div class="page">
+                    <div class="label">
+                        A one-time password has been sent to your entered email address. Enter the OTP below to verify your email address.
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            OTP
+                        </div>
+                        <input type="text" id="otp" name="otp" required>
+                    </div>
+                    <div class="field btns">
+                        <input class="submit" type="submit" value="Verify">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./components/loader.js"></script>
+</body>
+
+</html>

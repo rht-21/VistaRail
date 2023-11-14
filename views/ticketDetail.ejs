@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VistaRail - Your Booking</title>
+    <link rel="stylesheet" href="../public/components/style.css">
+    <style>
+        :root {
+            --background: #183D3D;
+            --text: #DDE6ED;
+            --accent: #93B1A6;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            height: 80vh;
+            margin: 0;
+        }
+
+        .ticket {
+            background-color: var(--text);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .ticket-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ticket-title h1 {
+            color: var(--background);
+        }
+
+        .ticket-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .detail-item span {
+            flex: 1;
+            text-align: left;
+        }
+
+        .detail-item span:first-child {
+            margin-right: 10px;
+            font-weight: bold;
+            color: var(--background);
+        }
+
+        .cancel-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cancel-ticket-btn {
+            background-color: rgb(218, 64, 64) !important;
+            color: var(--text) !important;
+            border: none !important;
+            padding: 10px 20px !important;
+            border-radius: 5px !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            transition: background-color 0.3s !important;
+        }
+
+        .cancel-ticket-btn:hover {
+            background-color: rgb(153, 22, 22) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/"><span class="website-name">VistaRail</span></a>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li class="dropdown">
+                        <a href="" class="dropbtn">Booking</a>
+                        <div class="dropdown-content">
+                            <a href="/">Book Ticket</a>
+                            <a href="/findBooking">Check PNR</a>
+                            <a href="/bookedTickets">Booking History</a>
+                        </div>
+                    </li>
+                    <li><a href="/trainBetweenStations">Train Between Stations</a></li>
+                    <li><a href="/checkBerth">Check Berth</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="ticket">
+            <div class="ticket-title">
+                <h1>Your Booking</h1>
+            </div>
+            <div class="ticket-details">
+                <% ticketData.forEach(ticket=> { %>
+                    <div class="detail-item">
+                        <span>PNR:</span>
+                        <span>
+                            <%= ticket.PNR %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Train No:</span>
+                        <span>
+                            <%= ticket.TRAIN_NO %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Train Name:</span>
+                        <span>
+                            <%= ticket.TRAIN_NAME %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Class:</span>
+                        <span>
+                            <%= ticket.CLASS %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Coach:</span>
+                        <span>
+                            <%= ticket.COACH %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Seat No:</span>
+                        <span>
+                            <%= ticket.SEAT_NO %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Journey Date:</span>
+                        <span>
+                            <%= ticket.JOURNEY_DATE %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Origin:</span>
+                        <span>
+                            <%= ticket.ORIGIN %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Destination:</span>
+                        <span>
+                            <%= ticket.DESTINATION %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Departure Time:</span>
+                        <span>
+                            <%= ticket.DEPARTURE_TIME %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Arrival Time:</span>
+                        <span>
+                            <%= ticket.ARRIVAL_TIME %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>No. of Passengers:</span>
+                        <span>
+                            <%= ticket.NO_OF_PASSENGERS %>
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Total Fare:</span>
+                        <span>
+                            ₹<%= ticket.TOTAL_FARE %>
+                        </span>
+                    </div>
+            </div>
+        </div>
+        <form action="/signin" method="GET">
+            <input type="hidden" name="PNR" value="<%= ticket.PNR %>" />
+            <div class="cancel-button">
+                <input class="cancel-ticket-btn" type="submit" value="Cancel Ticket" />
+            </div>
+        </form>
+        <% }); %>
+    </main>
+</body>
+
+</html>

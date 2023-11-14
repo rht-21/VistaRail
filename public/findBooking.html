@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VistaRail - Find your Booking</title>
+    <link rel="stylesheet" type="text/css" href="./public/components/style.css">
+</head>
+<body>
+    
+    <!-- Loader -->
+    <div id="loader" class="center"></div>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/"><span class="website-name">VistaRail</span></a>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li class="dropdown">
+                        <a href="" class="dropbtn">Booking</a>
+                        <div class="dropdown-content">
+                            <a href="/">Book Ticket</a>
+                            <a href="/findBooking">Check PNR</a>
+                            <a href="/bookedTickets">Booking History</a>
+                        </div>
+                    </li>
+                    <li><a href="/trainBetweenStations">Train Between Stations</a></li>
+                    <li><a href="/checkBerth">Check Berth</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main-content">
+            <div class="form-container">
+                <h1>Find Your Booking</h1>
+                <form action="/findBooking" method="post">
+                    <input type="text" id="pnrNumber" name="pnrNumber" placeholder="Enter PNR Number" required>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="./components/loader.js"></script>
+</body>
+</html>

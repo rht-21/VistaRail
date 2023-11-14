@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>VistaRail - Select Class</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Open+Sans&display=swap');
+
+    :root {
+      --background: #183D3D;
+      --text: #93B1A6;
+      --accent: #DDE6ED;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--accent);
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--background);
+      text-align: left;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: var(--accent);
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    thead {
+      background-color: var(--background);
+      color: var(--accent);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--text);
+    }
+
+    input[type="submit"] {
+      background-color: var(--background);
+      color: var(--text);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Selected Train</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Train Number</th>
+        <th>Train Name</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Sleeper</th>
+        <th>Seats Available</th>
+        <th>3AC</th>
+        <th>Seats Available</th>
+        <th>2AC</th>
+        <th>Seats Available</th>
+        <th>1AC</th>
+        <th>Seats Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% trainData.forEach(train=> { %>
+        <tr>
+          <td>
+            <%= train.TRAIN_NO %>
+          </td>
+          <td>
+            <%= train.TRAIN_NAME %>
+          </td>
+          <td>
+            <%= train.ORIGIN %>
+          </td>
+          <td>
+            <%= train.DESTINATION %>
+          </td>
+          <td>
+            <%= train.DEPARTURE_TIME %>
+          </td>
+          <td>
+            <%= train.ARRIVAL_TIME %>
+          </td>
+          <td>₹<%= train.FARE_SLEEPER %>
+          </td>
+          <td>
+            <%= train.SEATS_SL %>
+          </td>
+          <td>₹<%= train['FARE_3AC'] %>
+          </td>
+          <td>
+            <%= train['SEATS_3AC'] %>
+          </td>
+          <td>₹<%= train['FARE_2AC'] %>
+          </td>
+          <td>
+            <%= train['SEATS_2AC'] %>
+          </td>
+          <td>₹<%= train['FARE_1AC'] %>
+          </td>
+          <td>
+            <%= train['SEATS_1AC'] %>
+          </td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  <h1>Select Preferred Class</h1>
+  <% trainData.forEach(train=> { %>
+    <form action="/confirmBooking" method="GET">
+      <div class="select-style">
+        <input type="hidden" name="trainNumber" value="<%= train.TRAIN_NO %>" />
+        <input type="hidden" name="trainName" value="<%= train.TRAIN_NAME %>" />
+        <input type="hidden" name="origin" value="<%= train.ORIGIN %>" />
+        <input type="hidden" name="destination" value="<%= train.DESTINATION %>" />
+        <input type="hidden" name="departure" value="<%= train.DEPARTURE_TIME %>" />
+        <input type="hidden" name="arrival" value="<%= train.ARRIVAL_TIME %>" />
+        <label for="classSelection">Select Class:</label>
+        <select id="classSelection" name="Class">
+          <option value="Sleeper">Sleeper</option>
+          <option value="3AC">3AC</option>
+          <option value="2AC">2AC</option>
+          <option value="1AC">1AC</option>
+        </select>
+      </div>
+      <br>
+      <input type="submit" value="Book" />
+    </form>
+    <% }); %>
+</body>
+
+</html>
